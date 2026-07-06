@@ -16,7 +16,10 @@ startEmailCron();
 // Global Middleware
 // 👇 මෙන්න මෙතන තමයි ඔයාගේ Frontend ලින්ක් එක දාලා හැදුවේ 
 app.use(cors({
-    origin: 'https://mydomainguard-frontend-git-main-mali9.vercel.app',
+    origin: [
+        'https://mydomainguard-frontend.vercel.app',
+        'https://mydomainguard-frontend-git-main-mali9.vercel.app'
+    ],
     credentials: true
 }));
 
