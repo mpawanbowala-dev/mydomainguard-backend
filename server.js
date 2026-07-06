@@ -14,7 +14,12 @@ connectDB();
 startEmailCron();
 
 // Global Middleware
-app.use(cors()); // Enable Cross-Origin Resource Sharing
+// 👇 මෙන්න මෙතන තමයි ඔයාගේ Frontend ලින්ක් එක දාලා හැදුවේ 
+app.use(cors({
+    origin: 'https://mydomainguard-frontend-git-main-mali9.vercel.app',
+    credentials: true
+}));
+
 app.use(express.json()); // Parse incoming JSON payloads
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.use('/api/payments', require('./src/routes/paymentRoutes'));
