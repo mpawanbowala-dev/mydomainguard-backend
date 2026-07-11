@@ -1,5 +1,4 @@
 require('dotenv').config();
-const startEmailCron = require('./src/jobs/emailCron');
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./src/config/db');
@@ -10,8 +9,6 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-// ඔටෝමැටික් ඊමේල් යවන සිස්ටම් එක පටන් ගැනීම (Cron Job)
-startEmailCron();
 
 // Global Middleware
 // 👇 මෙන්න මෙතන තමයි ඔයාගේ Frontend ලින්ක් එක දාලා හැදුවේ 
@@ -28,6 +25,7 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.use('/api/payments', require('./src/routes/paymentRoutes'));
 
 // Route Mounts
+app.use('/api/cron', require('./src/routes/cronRoutes'));
 app.use('/api/auth', require('./src/routes/auth'));
 app.use('/api/domains', require('./src/routes/domainRoutes'));
 
